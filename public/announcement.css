@@ -1,0 +1,26 @@
+@media screen and (min-width: 992px) {
+    .left-side {
+      top:50px; }
+    
+      /*Right side stretch mode*/
+       .right-side.stretch {
+        margin-left: 0; }
+   
+       .right-side.stretch > .content-header {
+        margin-top: 0px; }
+   
+        /*Left side collapse*/
+         .left-side.collapse-left {
+         left: -220px; } }
+   
+   /*Give content full width on xs screens*/
+   @media screen and (max-width: 992px) {
+   .right-side {
+     margin-left: 0; } }
+     
+nav img{
+    width: 130px;
+}
+
+
+

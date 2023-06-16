@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Announcement</title>
+    <!-- <link rel="stylesheet" href="/styles.css"  type="text/css"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+ 
+  <body>
+    <section class="fixed top-0 w-screen p-3">
+      <a href="/"><img src="/images/logo2.png" class="w-24 lg:w-36 bg-white p-2 rounded"></a>
+    </section>
+    <div class="w-screen h-screen bg-[url('/images/covenant-university.webp')] bg-center bg-cover bg-no-repeat">
+      <div class="w-full h-full bg-black/70 flex flex-col items-center justify-center">
+        <div id="message-container" class="w-full max-w-xs md:max-w-2xl lg:max-w-5xl max-h-[80vh] min-h-[50vh] m-auto bg-white p-5 rounded flex flex-col lg:flex-row border-0">
+          <img id="my-image-container" src="/images/covenant-university.webp" class="lg:w-1/2 max-h-[50%] lg:max-h-none p-5 object-contain"/>
+          <h1 id="announcements" class="lg:w-1/2 text-xl overflow-scroll">We are thrilled to unveil our latest innovation, revolutionizing the way you interact with technology. Introducing [Product Name], a groundbreaking solution designed to simplify your daily life. With its cutting-edge features and unparalleled performance, get ready to experience a new era of convenience. Stay tuned for more details! #InnovationUnleashed</h1>
+        </div>
+      </div>
+    </div>
+
+
+  <script>
+      
+  const img = document.getElementById('my-image-container');
+  const message = document.getElementById('announcements');
+
+  let previousData = null;
+  const audioElement = new Audio('audio.wav');
+
+
+
+  function fetchData(){
+    // Fetch JSON data from server
+    fetch('/announcements/latest')
+      .then(response => response.json())
+      .then(data => {
+        data = data[0]
+        if (previousData == null){
+          previousData = data
+        }
+        else{
+          if(data.image_encoded != previousData.image_encoded && data.title != previousData.title){
+            audioElement.play()
+          } 
+        }
+        img.src = data.image_encoded;
+        message.innerHTML = data.title
+      })
+    
+  }
+  fetchData()
+  setInterval(fetchData, 20000);
+
+
+  </script>
+
+  </body>
+</html>

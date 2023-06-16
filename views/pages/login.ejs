@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- <link rel="stylesheet" href="/styles.css" type="text/css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/0fa94578a2.js" crossorigin="anonymous"></script>
+    <script src="scripts.js"></script>
+</head>
+<body>
+    <section class="fixed top-0 w-screen p-3">
+            <a href="/"><img src="/images/logo2.png" class="w-24 lg:w-36 bg-white p-2 rounded"></a>
+    </section>
+    <div class="w-screen h-screen bg-[url('/images/covenant-university.webp')] bg-center bg-cover bg-no-repeat">
+        <div class="w-full h-full bg-black/70 flex flex-col items-center justify-center">
+            <h1 class="text-lg md:text-3xl text-white uppercase font-bold tracking-wider my-5">Account Login</h1>
+            <form action="/login/create_announcement" method="post" class="w-3/4 lg:w-1/4 bg-white p-5 rounded-lg">
+                <!-- <div class="container"> -->
+                    <% if (message) { %>
+                        <p style="background-color: rgb(224, 128, 128); margin-bottom: 8px; padding: 4px 8px">
+                            <%= message %>
+                        </p>
+                    <% } %>
+                    <!-- </p> -->
+                    <!-- <form method="post" action="/login/create_announcement"> -->
+                    <div class="my-4">
+                        <label for="username" class="block mb-3"><i class="fa-regular fa-user text-gray-300 pe-3"></i>Username</label>
+                        <input type="text" id="username" name="username" placeholder="Enter Username" required class="px-3 py-2 border-b-2 w-full mb-3 outline-none" />
+                    </div>
+                    <!-- <br> -->
+                    <div class="my-4">
+                        <label for="password" class="block mb-3"><i class="fa-solid fa-lock text-gray-300 pe-3"></i>Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter Password" required class="px-3 py-2 border-b-2 w-full mb-3 outline-none" />
+                    </div>
+                    <!-- <br> -->
+                    <button type="submit" id="submit" class="block m-auto mb-4 py-1.5 px-6 rounded-2xl bg-black text-white bg-gradient-to-r from-purple-500 to-pink-500 uppercase text-md font-bold tracking-widest outline-none">Login</button>
+                    <!-- </form> -->
+
+                    <div class="flex items-center justify-start space-x-1">    
+                        <input type="checkbox" checked="checked" name="remember">
+                        <label class="">Remember Me</label>
+                    </div>
+                    <span class="psw"><a href="/users/reset" class="text-slate-500 text-xs underline outline-none">Reset Password</a></span>
+                <!-- </div>     -->
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
