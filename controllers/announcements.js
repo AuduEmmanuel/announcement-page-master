@@ -11,10 +11,10 @@ announcementsRouter.get('/latest', async (req, res ) => {
     {}, {}, 
     { sort: { 'created_at' : -1 }}, 
     function(err, latestDoc) {
-      // if (err) {
-      //   console.log(err);
-      //   return res.status(404) .json({});
-      // }
+       if (err) {
+         console.log(err);
+         return res.status(404) .json({});
+       }
       
       return res.status(200).json(latestDoc)
     }); 
