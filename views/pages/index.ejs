@@ -49,7 +49,7 @@
           previousData = data
         }
         else{
-          if(data.image_encoded != previousData.image_encoded && data.title != previousData.title){
+          if(data.image_encoded != previousData.image_encoded || data.title != previousData.title){
             audioElement.play()
           } 
         }
